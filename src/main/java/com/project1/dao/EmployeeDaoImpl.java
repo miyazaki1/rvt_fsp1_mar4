@@ -11,12 +11,14 @@ import java.util.List;
 import com.project1.model.Employee;
 import com.project1.util.ConnectionFactory;
 
-public class EmployeeImpl implements EmployeeDao {
+public class EmployeeDaoImpl implements EmployeeDao {
 
 	public static final String insert = "INSERT INTO Employees (id,employee_id, amount, status_id, request_date) Value (?,?,?,?,?)";
 	public static final String update = "UPDATE EMPLOYEES";
 
 	public List<Employee> getAllEmployees() {
+		System.out.println("Conducting get all Employees");
+
 		List<Employee> employees = new ArrayList<>();
 
 		try (Connection conn = ConnectionFactory.getConnection()) {
@@ -25,7 +27,7 @@ public class EmployeeImpl implements EmployeeDao {
 			ResultSet rs = stmt.executeQuery("SELECT * FROM Employees");
 
 			while (rs.next()) {
-				employees.add(new Employee(rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name"),
+				employees.add(new Employee(rs.getInt("employee_id"), rs.getString("first_name"), rs.getString("last_name"),
 						rs.getString("email"), rs.getInt("job_id")));
 			}
 
