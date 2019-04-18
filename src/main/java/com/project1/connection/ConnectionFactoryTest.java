@@ -23,7 +23,7 @@ public class ConnectionFactoryTest {
 	
 	@Test
 	public void addEmployee() {
-		Employee employee = new Employee(3,"FN", "LN", "EM", 1);
-		dao.addEmployee(employee);
+		//Employee employee = new Employee(3,"FN", "LN", "EM", 1);
+		//dao.addEmployee(employee);
 	}
 }

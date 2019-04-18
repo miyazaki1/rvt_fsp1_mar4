@@ -11,13 +11,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	@SuppressWarnings("unused")
 	private final ObjectMapper mapper = new ObjectMapper();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("Entering DispatcherServlet");
-		
-		resp.getOutputStream().write(mapper.writeValueAsBytes(Dispatcher.process(req, resp)));
+		resp.setContentType("application/json");
+
+		//resp.getOutputStream().write(mapper.writeValueAsBytes(Dispatcher.process(req, resp)));
 		System.out.println("Response sent successfully!");
 	}
 	
@@ -26,7 +28,7 @@ public class DispatcherServlet extends HttpServlet {
 		System.out.println("Entering DispatcherServlet.doPost");
 		resp.setContentType("application/json");
 		
-		resp.getOutputStream().write(mapper.writeValueAsBytes(Dispatcher.processPost(req, resp)));
+		//resp.getOutputStream().write(mapper.writeValueAsBytes(Dispatcher.processPost(req, resp)));
 		System.out.println("Response sent successfully!");
 	}
 }
