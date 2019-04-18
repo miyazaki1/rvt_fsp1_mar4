@@ -15,19 +15,18 @@ public class DispatcherServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("application/json");
+		System.out.println("Entering DispatcherServlet");
 		
-	//	resp.getOutputStream().setWriteListener(
-		//		mapper.writeValueAsBytes(Dispatcher.process(req, resp)));
-		
+		resp.getOutputStream().write(mapper.writeValueAsBytes(Dispatcher.process(req, resp)));
+		System.out.println("Response sent successfully!");
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPost(req, resp);
+		System.out.println("Entering DispatcherServlet.doPost");
+		resp.setContentType("application/json");
+		
+		resp.getOutputStream().write(mapper.writeValueAsBytes(Dispatcher.processPost(req, resp)));
+		System.out.println("Response sent successfully!");
 	}
-	
-	
-	
 }

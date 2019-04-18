@@ -13,7 +13,7 @@ import com.project1.util.ConnectionFactory;
 
 public class EmployeeDaoImpl implements EmployeeDao {
 
-	public static final String insert = "INSERT INTO Employees (id,employee_id, amount, status_id, request_date) Value (?,?,?,?,?)";
+	public static final String insert = "INSERT INTO Employees (employee_id, first_name, last_name, email, job_id) Values (?,?,?,?,?)";
 	public static final String update = "UPDATE EMPLOYEES";
 
 	public List<Employee> getAllEmployees() {
@@ -27,15 +27,15 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			ResultSet rs = stmt.executeQuery("SELECT * FROM Employees");
 
 			while (rs.next()) {
-				employees.add(new Employee(rs.getInt("employee_id"), rs.getString("first_name"), rs.getString("last_name"),
-						rs.getString("email"), rs.getInt("job_id")));
+				employees.add(new Employee(rs.getInt("employee_id"), 
+						rs.getString("first_name"), rs.getString("last_name"),
+						rs.getString("email"), rs.getInt("job_id")));				
+				//System.out.println(rs.getString("first_name"));
 			}
-
 			return employees;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 		return null;
 	}
 
@@ -61,7 +61,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		// If employee doesn't exist add employee
 		try (Connection conn = ConnectionFactory.getConnection()) {
 			PreparedStatement stmt = conn.prepareStatement(insert);
-
 			stmt.setInt(1, employee.getEmployee_id());
 			stmt.setString(2, employee.getFirst_name());
 			stmt.setString(3, employee.getLast_name());
@@ -69,7 +68,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			stmt.setInt(5, employee.getJob_id());
 
 			int rowsAffected = stmt.executeUpdate();
-
 			if (rowsAffected == 1) {
 				System.out.println("#addEmployee returned successfully");
 				return employee;
@@ -80,7 +78,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 		// Returns Null if nothing else
 		System.out.println("Cannot #addEmployee, returned null");
-
 		return null;
 	}
 
@@ -95,9 +92,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 					String where = "WHERE employee_id = \'" + String.valueOf(toBeUpdated.getEmployee_id()) + "\'";
 					Statement stmt = conn.createStatement();
-
 					ResultSet rs = stmt.executeQuery(params + where);
-
 					System.out.println(rs);
 
 					return toBeUpdated;
