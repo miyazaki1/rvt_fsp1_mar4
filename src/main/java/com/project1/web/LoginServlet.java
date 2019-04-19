@@ -21,9 +21,11 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		final LoginData user = service.attemptAuthentication(req, resp);
 		if (user != null) {
-			req.getSession().setAttribute("currentUser", user.getUsername());
-			req.getSession().setAttribute("role", user.getJob_id());
+			req.getSession().setAttribute("username", user.getUsername());
+			req.getSession().setAttribute("job_id", user.getJob_id());
 			req.getRequestDispatcher("/authenticated.jsp").forward(req, resp);
+			
+			
 		} else {
 			resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 			return;

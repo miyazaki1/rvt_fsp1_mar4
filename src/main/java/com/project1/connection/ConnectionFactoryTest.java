@@ -6,6 +6,8 @@ import org.junit.Test;
 
 import com.project1.dao.EmployeeDao;
 import com.project1.dao.EmployeeDaoImp;
+import com.project1.dao.LoginDao;
+import com.project1.dao.LoginDaoImp;
 import com.project1.dao.ReimburseDao;
 import com.project1.dao.ReimburseDaoImp;
 import com.project1.model.Employee;
@@ -15,6 +17,7 @@ public class ConnectionFactoryTest {
 	
 	private EmployeeDao dao = new EmployeeDaoImp();
 	private ReimburseDao rdao = new ReimburseDaoImp();
+	private LoginDao ldao = new LoginDaoImp();
 	
 	@Test
 	public void getAllEmployees() {
@@ -73,6 +76,11 @@ public class ConnectionFactoryTest {
 		for(Reimbursement re : reimb) {
 			System.out.println("id: " + re.getId() + " em_id: " + re.getEmployee_id() + " amount: " + re.getAmount());
 		}
+	}
+	
+	@Test
+	public void testLogin()	{
+		ldao.attemptAuthentication("dm", "pw1");
 	}
 	
 }

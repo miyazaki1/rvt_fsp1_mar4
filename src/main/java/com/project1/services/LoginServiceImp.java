@@ -19,6 +19,4 @@ public class LoginServiceImp implements LoginServices {
 		
 		return dao.attemptAuthentication(username, password);
 	}
-
-
 }

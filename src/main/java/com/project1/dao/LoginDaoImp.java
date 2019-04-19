@@ -49,7 +49,9 @@ public class LoginDaoImp implements LoginDao{
 			stmt.setString(1, username);
 			stmt.setString(2, password);
 			ResultSet rs = stmt.executeQuery();
+			
 			if (rs.next()) {
+				System.out.println("username: "  + rs.getString("username") + " first name: " + rs.getString("first_name"));
 				return new LoginData(rs.getInt("employee_id"), rs.getInt("job_id"), rs.getString("username"));
 			}
 		} catch (SQLException e) {
