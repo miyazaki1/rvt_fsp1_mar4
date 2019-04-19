@@ -7,21 +7,25 @@ public class Reimbursement {
 	private int employee_id;
 	private double amount;
 	private int status_id;
+	private String description;
 	private Date request_date;
 	private int manager_id;
+	private Date decision_date;
 	
 	public Reimbursement() {
 		super();
 	}
 
-	public Reimbursement(int id, int employee_id, double amount, int status_id, Date request_date, int manager_id) {
+	public Reimbursement(int id, int employee_id, double amount, int status_id, String description, Date request_date, int manager_id, Date decision_date) {
 		super();
 		this.id = id;
 		this.employee_id = employee_id;
 		this.amount = amount;
 		this.status_id = status_id;
+		this.setDescription(description);
 		this.request_date = request_date;
 		this.manager_id = manager_id;
+		this.decision_date = decision_date;
 	}
 
 	public int getId() {
@@ -70,5 +74,21 @@ public class Reimbursement {
 
 	public void setManager_id(int manager_id) {
 		this.manager_id = manager_id;
+	}
+
+	public Date getDecision_date() {
+		return decision_date;
+	}
+
+	public void setDecision_date(Date decision_date) {
+		this.decision_date = decision_date;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

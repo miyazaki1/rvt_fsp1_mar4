@@ -10,12 +10,12 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project1.dao.EmployeeDao;
-import com.project1.dao.EmployeeDaoImpl;
+import com.project1.dao.EmployeeDaoImp;
 import com.project1.model.Employee;
 
 public class EmployeeServiceImp implements EmployeeService{
 
-	private final EmployeeDao dao = new EmployeeDaoImpl();
+	private final EmployeeDao dao = new EmployeeDaoImp();
 	private final ObjectMapper mapper = new ObjectMapper();
 	
 	@Override

@@ -11,13 +11,11 @@ import java.util.List;
 import com.project1.model.Employee;
 import com.project1.util.ConnectionFactory;
 
-public class EmployeeDaoImpl implements EmployeeDao {
+public class EmployeeDaoImp implements EmployeeDao {
 
-	public static final String insert = "INSERT INTO Employees (employee_id, first_name, last_name, email, job_id) Values (?,?,?,?,?)";
-	public static final String update = "UPDATE EMPLOYEES";
-
+	public static final String insert = "INSERT INTO Employees (employee_id, first_name, last_name, email, job_id, username, password) Values (?,?,?,?,?,?,?)";
+	public static final String update = "Update Employees SET first_name = ?, last_name = ?, email = ?, job_id = ? where employee_id = ?";
 	public List<Employee> getAllEmployees() {
-		System.out.println("Conducting get all Employees");
 
 		List<Employee> employees = new ArrayList<>();
 
@@ -29,9 +27,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			while (rs.next()) {
 				employees.add(new Employee(rs.getInt("employee_id"), 
 						rs.getString("first_name"), rs.getString("last_name"),
-						rs.getString("email"), rs.getInt("job_id")));				
+						rs.getString("email"), rs.getInt("job_id"), 
+						rs.getString("username"), rs.getString("password")));				
 				//System.out.println(rs.getString("first_name"));
 			}
+			//System.out.println("Conducting get all Employees");
+
 			return employees;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -66,6 +67,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			stmt.setString(3, employee.getLast_name());
 			stmt.setString(4, employee.getEmail());
 			stmt.setInt(5, employee.getJob_id());
+			stmt.setString(6, employee.getUsername());
+			stmt.setString(7, employee.getPassword());
+
 
 			int rowsAffected = stmt.executeUpdate();
 			if (rowsAffected == 1) {
@@ -82,29 +86,37 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	public Employee updateEmployee(Employee toBeUpdated) {
+		System.out.println("Inside #updateEmployee");
 		for (int i = 0; i < getAllEmployees().size(); i++) {
-			if (getAllEmployees().get(i) == toBeUpdated) {
+			if (getAllEmployees().get(i).getEmployee_id() == toBeUpdated.getEmployee_id()) {
 				System.out.println("Found employee to be updated employedId: " + toBeUpdated.getEmployee_id());
 
 				try (Connection conn = ConnectionFactory.getConnection()) {
-					String params = "SET first_name = \'" + toBeUpdated.getFirst_name() + "\' , last_name = \'"
-							+ toBeUpdated.getLast_name() + "\' , email = \'" + toBeUpdated.getEmail() + "\' ";
-
-					String where = "WHERE employee_id = \'" + String.valueOf(toBeUpdated.getEmployee_id()) + "\'";
-					Statement stmt = conn.createStatement();
-					ResultSet rs = stmt.executeQuery(params + where);
-					System.out.println(rs);
-
-					return toBeUpdated;
+					PreparedStatement stmt = conn.prepareStatement(update);					
+					stmt.setString(1, toBeUpdated.getFirst_name());
+					stmt.setString(2, toBeUpdated.getLast_name());
+					stmt.setString(3, toBeUpdated.getEmail());
+					stmt.setInt(4, toBeUpdated.getJob_id());
+					stmt.setInt(5, toBeUpdated.getEmployee_id());
+					stmt.setString(6, toBeUpdated.getUsername());
+					stmt.setString(7, toBeUpdated.getPassword());
+					
+					int rowsAffected = stmt.executeUpdate();
+					if(rowsAffected ==1) {
+						System.out.println("Update Successful");
+						return toBeUpdated;
+					}	
+					
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-
 				System.out.println("Failed to update employee: " + toBeUpdated.getEmployee_id() + ", "
 						+ toBeUpdated.getFirst_name() + " " + toBeUpdated.getLast_name());
 				return toBeUpdated;
 			}
-		}
+		}		
+		System.out.println("Failed to update employee: " + toBeUpdated.getEmployee_id() + ", "
+				+ toBeUpdated.getFirst_name() + " " + toBeUpdated.getLast_name());
 		return toBeUpdated;
 	}
 

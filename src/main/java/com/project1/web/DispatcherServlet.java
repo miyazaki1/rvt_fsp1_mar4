@@ -11,8 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	@SuppressWarnings("unused")
-	private final ObjectMapper mapper = new ObjectMapper();
+	//private final ObjectMapper mapper = new ObjectMapper();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

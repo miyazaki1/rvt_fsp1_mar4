@@ -7,20 +7,26 @@ public class Employee {
 	private String last_name;
 	private String email;
 	private int job_id;
+	private String username;
+	private String password;
 	
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Employee(int employee_id, String first_name, String last_name, String email, int job_id) {
+	public Employee(int employee_id, String first_name, String last_name, String email, int job_id, String username,
+			String password) {
 		super();
 		this.employee_id = employee_id;
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.email = email;
 		this.job_id = job_id;
+		this.username = username;
+		this.password = password;
 	}
+
 
 	public int getEmployee_id() {
 		return employee_id;
@@ -60,5 +66,21 @@ public class Employee {
 
 	public void setJob_id(int job_id) {
 		this.job_id = job_id;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }

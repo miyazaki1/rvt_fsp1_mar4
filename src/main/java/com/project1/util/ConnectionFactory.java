@@ -16,7 +16,7 @@ public class ConnectionFactory {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			System.out.println("getConnection@Factory");
+			//System.out.println("getConnection@Factory");
 			return DriverManager.getConnection(url, username, password);
 		} catch (SQLException e) {
 			System.err.println("SQL State: " + e.getSQLState());
