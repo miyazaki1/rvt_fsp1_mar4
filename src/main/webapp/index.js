@@ -8,12 +8,12 @@ const getAllTodos = () => {
 	xhr.onreadystatechange = () => {
 		if (xhr.status === 200 && xhr.readyState === 4) {
 			const responseJson = xhr.responseText;
-			//populateTable(JSON.parse(responseJson));
+			populateTable(JSON.parse(responseJson));
 		}
 	}
 	
-	xhr.open("GET");
-	//xhr.open("GET", "http://localhost:8080/BetterServletExample/api/todos");
+	//xhr.open("GET");
+	xhr.open("GET", "http://localhost:8088/ERS/todos");
 
 	xhr.send();
 }
