@@ -5,8 +5,8 @@ import java.util.Collections;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ers.services_concrete.EmployeeServiceImp;
-import com.ers.services_interface.EmployeeService;
+import com.ers.services.EmployeeService;
+import com.ers.services.EmployeeServiceImp;
 
 public class Dispatcher {
 	private static final EmployeeService employeeService = new EmployeeServiceImp();

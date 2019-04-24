@@ -10,7 +10,7 @@
 	crossorigin="anonymous">
 </head>
 
-<body>
+<body style="background-image: url('foxhound.png'); background-repeat: no-repeat; background-size: cover; background-color: 070707	;">
 
 	<h1>
 		Welcome to our session tracked application,
@@ -32,16 +32,27 @@
 	%>
 
 	<br>
+	
+	<form method="post" action="/ERS/DisplayReimbursements">
+		<button onclick="requestData()" value="Request Data">Request Data</button>
+	</form>
 
 	<table>
 		<thead>
 			<tr>
-				<th>Todo ID</th>
-				<th>Title</th>
+				<th>Reimbursement ID</th>
+				<th>Employee ID</th>
 				<th>Description</th>
+				<th>Amount</th>
+				<th>Request Date</th>
+				<th>Decision Date</th>
+				<th>Deciding Manager</th>
+				<th>Status</th>
+				
+				<th>
 			</tr>
 		</thead>
-		<tbody id="todoTable"></tbody>
+		<tbody id="itemTable"></tbody>
 	</table>
 
 	<script src="./index.js"></script>

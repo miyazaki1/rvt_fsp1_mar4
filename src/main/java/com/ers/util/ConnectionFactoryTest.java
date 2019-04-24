@@ -1,15 +1,17 @@
 package com.ers.util;
 
 import java.util.List;
+import java.util.Properties;
 
 import org.junit.Test;
 
-import com.ers.dao_concrete.EmployeeDaoImp;
-import com.ers.dao_concrete.LoginDaoImp;
-import com.ers.dao_concrete.ReimburseDaoImp;
-import com.ers.dao_interface.EmployeeDao;
-import com.ers.dao_interface.LoginDao;
-import com.ers.dao_interface.ReimburseDao;
+import com.ers.connection.ConnectionFactory;
+import com.ers.dao.EmployeeDao;
+import com.ers.dao.EmployeeDaoImp;
+import com.ers.dao.LoginDao;
+import com.ers.dao.LoginDaoImp;
+import com.ers.dao.ReimburseDao;
+import com.ers.dao.ReimburseDaoImp;
 import com.ers.model.Employee;
 import com.ers.model.Reimbursement;
 
@@ -105,7 +107,15 @@ public class ConnectionFactoryTest {
 	@Test
 	public void testLoginServlet()	{
 		System.out.println("#### Test Login Servlet ####");
-		ldao.attemptAuthentication("dm", "pw1");
+		ldao.attemptAuthentication("dmarlene", "p1");
 		System.out.println("#### End of <testLoginServlet> Test ####\n\n");
 	}	
+	
+//	@Test
+//	public void GetJDBC() {
+//		Properties props = ConnectionFactory.getJdbcProperties();		
+//		System.out.println(props.getProperty("jdbc.url"));
+//		System.out.println(props.getProperty("jdbc.username"));
+//		System.out.println(props.getProperty("jdbc.password"));
+//	}
 }

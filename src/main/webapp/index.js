@@ -1,8 +1,8 @@
 window.onload = () => {
-	getAllTodos();
+	getAllItems();
 }
 
-const getAllTodos = () => {
+const getAllItems = () => {
 	const xhr = new XMLHttpRequest();
 	
 	xhr.onreadystatechange = () => {
@@ -12,34 +12,44 @@ const getAllTodos = () => {
 		}
 	}
 	
-	//xhr.open("GET");
-	xhr.open("GET", "http://localhost:8088/ERS/todos");
+	xhr.open("GET", "http://localhost:8088/ERS/reimb");
 
 	xhr.send();
 }
 
-const populateTable = listOfTodos => {
+const populateTable = itemList => {
 	
-	for (let todo of listOfTodos) {
+	for (let item of itemList) {
 		const tdId = document.createElement("td");
-		const tdTitle = document.createElement("td");
-		const tdDescription = document.createElement("td");
-		
+		const tdEId = document.createElement("td");
+		const tdDesc = document.createElement("td");
+		const tdAmt = document.createElement("td");
+		const tdRDate = document.createElement("td");
+		const tdDDate = document.createElement("td");
+		const tdManager = document.createElement("td");
+		const tdStatus = document.createElement("td");
+
 		// Set the value of each cell
-		tdId.textContent = todo.id;
-		tdTitle.textContent = todo.title;
-		tdDescription.textContent = todo.description;
-		
-		// Create a row to be appended onto our table
+		tdId.textContent = item.id;
+		tdEId.textContent = item.employee_id;
+		tdDesc.textContent = item.description;
+		tdAmt.textContent = item.amount;
+		tdRDate.textContent = item.request_date;
+		tdDDate.textContent = item.decision_date;
+		tdManager.textContent = item.manager_id;
+		tdStatus.textContent = item.status_id;
+
 		const row = document.createElement("tr");
 		
-		// Set the td's to the corresponding order of our table header
 		row.appendChild(tdId);
-		row.appendChild(tdTitle);
-		row.appendChild(tdDescription);
+		row.appendChild(tdEId);
+		row.appendChild(tdDesc);
+		row.appendChild(tdAmt);
+		row.appendChild(tdRDate);
+		row.appendChild(tdDDate);
+		row.appendChild(tdManager);
+		row.appendChild(tdStatus);
 		
-		
-		// Append our row onto our table of todos
-		document.getElementById("todoTable").appendChild(row);
+		document.getElementById("itemTable").appendChild(row);
 	}
 }

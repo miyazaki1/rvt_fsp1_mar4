@@ -1,4 +1,4 @@
-package com.ers.web.servlets;
+package com.ers.web;
 
 import java.io.IOException;
 
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ers.model.LoginData;
-import com.ers.services_concrete.LoginServiceImp;
-import com.ers.services_interface.LoginServices;
+import com.ers.services.LoginServiceImp;
+import com.ers.services.LoginServices;
 
 public class LoginServlet extends HttpServlet {
 	

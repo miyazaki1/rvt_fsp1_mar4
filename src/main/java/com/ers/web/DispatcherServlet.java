@@ -1,4 +1,4 @@
-package com.ers.web.servlets;
+package com.ers.web;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package com.ers.dao_interface;
+package com.ers.dao;
 
 import java.util.List;
 

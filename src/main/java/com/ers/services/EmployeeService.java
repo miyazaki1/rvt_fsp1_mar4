@@ -1,4 +1,4 @@
-package com.ers.services_interface;
+package com.ers.services;
 
 import java.util.List;
 

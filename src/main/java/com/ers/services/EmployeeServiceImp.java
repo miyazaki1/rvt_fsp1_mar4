@@ -1,4 +1,4 @@
-package com.ers.services_concrete;
+package com.ers.services;
 
 import java.io.IOException;
 import java.util.List;
@@ -6,10 +6,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ers.dao_concrete.EmployeeDaoImp;
-import com.ers.dao_interface.EmployeeDao;
+import com.ers.dao.EmployeeDao;
+import com.ers.dao.EmployeeDaoImp;
 import com.ers.model.Employee;
-import com.ers.services_interface.EmployeeService;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
