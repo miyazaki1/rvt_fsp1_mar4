@@ -1,5 +1,6 @@
 window.onload = () => {
 	getAllItems();
+	disableDisplays();
 }
 
 const getAllItems = () => {
@@ -23,9 +24,6 @@ const create = () => {
 	
 	xhr.onreadystatechange = () => {
 		if (xhr.status === 200 && xhr.readyState === 4) {
-			//const json = xhr.responseText;	
-			//console.log(json);
-			
 			setTimeout(3000);
 			getAllItems();
 		}
@@ -47,7 +45,20 @@ const parseForm = () => {
 	}
 }
 
+const disableDisplays = () =>{
+	document.getElementById("AddReimbursementNav").style.display = 'none';
+	document.getElementById("ReimbursementNav").style.display = 'none';
+}
 
+const toggleDisplay = (id) =>{	
+	
+	var display = document.getElementById(id);	
+		if(	display.style.display  == 'none'){
+			display.style.display  = 'block';
+		}else{
+			display.style.display  = 'none';
+		}
+}
 
 const clearTable = () => {
 	var table = document.getElementById("itemTable");
@@ -66,15 +77,14 @@ const populateTable = itemList => {
 		const tdManager = document.createElement("td");
 		const tdStatus = document.createElement("td");
 
-		// Set the value of each cell
-		tdId.textContent = item.id;
-		tdEId.textContent = item.employee_id;
-		tdDesc.textContent = item.description;
-		tdAmt.textContent = item.amount;
-		tdRDate.textContent = item.request_date;
-		tdDDate.textContent = item.decision_date;
-		tdManager.textContent = item.manager_id;
-		tdStatus.textContent = item.status_id;
+		tdId.innerHTML = item.id;
+		tdEId.innerHTML = item.employee_id;
+		tdDesc.innerHTML = item.description;
+		tdAmt.innerHTML = item.amount;
+		tdRDate.innerHTML = item.request_date;
+		tdDDate.innerHTML = item.decision_date;
+		tdManager.innerHTML = item.manager_id;
+		tdStatus.innerHTML = item.status_id;
 
 		const row = document.createElement("tr");
 		
