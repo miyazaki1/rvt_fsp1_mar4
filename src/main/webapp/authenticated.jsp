@@ -14,7 +14,7 @@
 </head>
 
 <body
-	style="background-image: url('images/foxhound.png'); background-repeat: no-repeat; background-size: cover; background-color: 070707;">
+	style="background-image: url('images/foxhound.png'); background-repeat: no-repeat; background-size: cover; background-color: black;">
 
 	<!-- Header -->
 		<button style="background-color: #131313; color: gray;">Logout</button>
@@ -34,7 +34,7 @@
 			} else {
 		%>
 
-		Text Goes Here
+		Invalid User -- #!
 
 		<%
 			}
@@ -45,12 +45,10 @@
 	</h1>
 	<!-- Navigation -->
 	<button style="background-color: #131313; color: gray;" onclick="toggleDisplay('AddReimbursementNav')">Request Reimbursement</button>
-	<button style="background-color: #131313; color: gray;" onclick="toggleDisplay('ReimbursementNav')">Display Reimbursements</button>
-	
-	
+	<button style="background-color: #131313; color: gray;" onclick="toggleDisplay('ReimbursementNav')">Display Reimbursements</button>	
 	<br>	
 	<!-- Create Reimbursement -->
-	<div id="AddReimbursementNav">
+	<div id="AddReimbursementNav" style="margine: 5%">
 	<label>Employee ID: </label>
 	<input style="background-color: #131313; color: gray;" name="Employee ID"  type="text"
 		placeholder="username" id="username">
@@ -67,10 +65,8 @@
 	</div>
 	<!-- End of Create Reimbursement -->
 	<br>
-	
 	<div id="ReimbursementNav">
-	<button style="background-color: #131313; color: gray;" onclick="getAllItems()">Request Data</button>
-	
+	<button style="background-color: #131313; color: gray;" onclick="getAllItems()">Fetch All Requests</button>
 	<!--  All Reimbursements Table -->
 	<table>
 		<thead>
@@ -88,9 +84,7 @@
 		</thead>
 		<tbody id="itemTable"></tbody>
 	</table>
-	
 	</div>
-
 	<!--  End of All Reimbursements Table -->
 
 </body>

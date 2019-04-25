@@ -14,8 +14,8 @@ public interface ReimburseDao {
 	List<Reimbursement> getAllReimbursementsByDate(Date date);
 
 	Reimbursement getReimbursementById(int id);
-	void approveReimbursement(int id, int manager_id);
-	void declineReimbursement(int id, int manager_id);
+	Reimbursement approveReimbursement(int id, int manager_id);
+	Reimbursement declineReimbursement(int id, int manager_id);
 
 	Reimbursement addReimbursement(int employee_id, double amount, String description);
 	Reimbursement addReimbursement(Reimbursement reimbursement);

@@ -16,8 +16,7 @@ public class ReimbursementServiceImp implements ReimbursementService {
 	private final ObjectMapper mapper = new ObjectMapper();
 
 	@Override
-	public List<Reimbursement> requestAllReimbursements(HttpServletRequest req, HttpServletResponse resp) {
-		
+	public List<Reimbursement> requestAllReimbursements(HttpServletRequest req, HttpServletResponse resp) {		
 		return dao.getAllReimbursements();
 	}
 	@Override
@@ -30,6 +29,33 @@ public class ReimbursementServiceImp implements ReimbursementService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return null;
+	}
+	
+	@Override
+	public Reimbursement approveReimbursement(HttpServletRequest req, HttpServletResponse resp) {
+		try {
+			Reimbursement reimbursement = mapper.readValue(req.getInputStream(), Reimbursement.class);
+			return dao.approveReimbursement(reimbursement.getId(), reimbursement.getEmployee_id());
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		
+		return null;
+	}
+	@Override
+	public Reimbursement denyReimbursement(HttpServletRequest req, HttpServletResponse resp) {
+		try {
+			Reimbursement reimbursement = mapper.readValue(req.getInputStream(), Reimbursement.class);
+			return dao.declineReimbursement(reimbursement.getId(), reimbursement.getEmployee_id());
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		
 		return null;
 	}
 }

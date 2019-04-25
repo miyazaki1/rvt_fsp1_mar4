@@ -26,12 +26,16 @@ public class Dispatcher {
 
 		System.out.println(uri);
 		switch (uri) {
-		case "/Reimbursement":
-			return reimbursementService.requestAllReimbursements(request, response);
 		case "/employees":
 			return employeeService.getAllEmployees(request, response);
+		case "/Reimbursement":
+			return reimbursementService.requestAllReimbursements(request, response);
 		case "/CreateReimbursement":
 			return reimbursementService.createReimbursement(request, response);
+		case "/ApproveRe":
+			return reimbursementService.approveReimbursement(request, response);
+		case "/DenyRe":
+			return reimbursementService.denyReimbursement(request, response);
 		default:
 			return Collections.singletonMap("message", "Not yet implemented: " + uri);
 		}
@@ -41,13 +45,17 @@ public class Dispatcher {
 		final String uri = request.getRequestURI().replace(url, "");
 		System.out.println(uri);
 
-		switch (uri) {
-		case "/Reimbursement":
-			return reimbursementService.requestAllReimbursements(request, response);
+		switch (uri) {		
 		case "/employees":
 			return employeeService.getAllEmployees(request, response);
+		case "/Reimbursement":
+			return reimbursementService.requestAllReimbursements(request, response);
 		case "/CreateReimbursement":
 			return reimbursementService.createReimbursement(request, response);
+		case "/ApproveRe":
+			return reimbursementService.approveReimbursement(request, response);
+		case "/DenyRe":
+			return reimbursementService.denyReimbursement(request, response);
 		default:
 			return Collections.singletonMap("message", "Not yet implemented: " + uri);
 		}
