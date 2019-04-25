@@ -165,4 +165,30 @@ public class ReimburseDaoImp implements ReimburseDao{
 		
 		return null;
 	}
+
+	@Override
+	public Reimbursement addReimbursement(Reimbursement reimbursement) {
+		try(Connection conn = ConnectionFactory.getConnection()){
+			PreparedStatement stmt = conn.prepareStatement(insert);
+			Date date = new Date(System.currentTimeMillis());
+			
+			stmt.setInt(1, getAllReimbursements().size() + 1);
+			stmt.setInt(2, reimbursement.getEmployee_id());
+			stmt.setDouble(3, reimbursement.getAmount());
+			stmt.setInt(4, 1);
+			stmt.setString(5, reimbursement.getDescription());
+			stmt.setDate(6, date);
+			stmt.setNull(7, 0);
+			stmt.setNull(8, 0);
+
+			int rowsAffected = stmt.executeUpdate();
+			if(rowsAffected ==1) {
+				System.out.println("Create Reimbursement Successful");
+			}				
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
 }

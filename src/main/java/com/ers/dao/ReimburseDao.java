@@ -18,4 +18,5 @@ public interface ReimburseDao {
 	void declineReimbursement(int id, int manager_id);
 
 	Reimbursement addReimbursement(int employee_id, double amount, String description);
+	Reimbursement addReimbursement(Reimbursement reimbursement);
 }

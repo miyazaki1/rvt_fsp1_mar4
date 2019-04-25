@@ -3,9 +3,7 @@ window.onload = () => {
 }
 
 const getAllItems = () => {
-	
 	const xhr = new XMLHttpRequest();
-	
 	xhr.onreadystatechange = () => {
 		if (xhr.status === 200 && xhr.readyState === 4) {
 			const responseJson = xhr.responseText;
@@ -13,11 +11,43 @@ const getAllItems = () => {
 			populateTable(JSON.parse(responseJson));
 		}
 	}
-	
 	xhr.open("POST", "http://localhost:8088/ERS/Reimbursement");
-
 	xhr.send();
 }
+
+const create = () => {
+	const xhr = new XMLHttpRequest();
+	
+	console.log("clicked create");
+	const formData = parseForm();
+	
+	xhr.onreadystatechange = () => {
+		if (xhr.status === 200 && xhr.readyState === 4) {
+			//const json = xhr.responseText;	
+			//console.log(json);
+			
+			setTimeout(3000);
+			getAllItems();
+		}
+	}
+	xhr.open("POST", "http://localhost:8088/ERS/CreateReimbursement");
+	xhr.send(JSON.stringify(formData));
+}
+
+const parseForm = () => {
+	const usernameText = document.getElementById("username").value;
+	const amountText = document.getElementById("amount").value;
+	const descText = document.getElementById("description").value;
+	
+	console.log("parse form:" + usernameText + "," + amountText + "," + descText);
+	return {
+		employee_id: usernameText,
+		amount: amountText,
+		description: descText
+	}
+}
+
+
 
 const clearTable = () => {
 	var table = document.getElementById("itemTable");

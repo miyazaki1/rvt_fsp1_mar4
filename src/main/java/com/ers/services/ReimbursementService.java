@@ -9,4 +9,5 @@ import com.ers.model.Reimbursement;
 
 public interface ReimbursementService {
 	List<Reimbursement> requestAllReimbursements(HttpServletRequest req, HttpServletResponse resp);
+	Reimbursement createReimbursement(HttpServletRequest req, HttpServletResponse resp);
 }
