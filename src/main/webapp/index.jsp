@@ -8,10 +8,12 @@
 	crossorigin="anonymous">
 </head>
 
-<body style="background-image: url('foxhound.png'); background-repeat: no-repeat; background-size: contain, cover; background-color: 070707	;">
+<body style="background-image: url('images/foxhound.png'); background-repeat: no-repeat; background-size: contain, cover; background-color: 070707	;">
 
 	<div style="margin: 20%">
-		<form method="post" action="/ERS/login">
+		<!--   <form method="post" action="/ERS/login">-->
+			
+		<form method="post" action="/ERS/Dispatcher">
 			
 			<label>Username:  </label><input name="username" type="text" placeholder="username"><br>
 			<label>Password:  </label><input name="password" type="password" placeholder="password"><br>

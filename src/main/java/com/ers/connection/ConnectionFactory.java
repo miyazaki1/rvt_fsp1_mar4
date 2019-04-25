@@ -7,16 +7,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class ConnectionFactory {
-	//private static Properties props = getJdbcProperties();
-	
-	private final static String localUsername = "homeuser";
-	private final static String localPassword = "password2";
-	private final static String localUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-
-	private final static String awsUsername = "miyazaki1";
-	private final static String awsPassword = "KinomotoSakura10";
-	private final static String awsUrl = "dbc:oracle:thin:miyakei-rdbs.cuhnfxjtmc7x.us-east-1.rds.amazonaws.com:1521";
-	
+	private static Properties props = getJdbcProperties();	
 	private ConnectionFactory() {}
 
 	public static Connection getConnection() {
@@ -27,7 +18,9 @@ public class ConnectionFactory {
 	{
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
-			return DriverManager.getConnection(localUrl, localUsername, localPassword);
+			return DriverManager.getConnection(props.getProperty("jdbc.url"),
+					props.getProperty("jdbc.username"),
+					props.getProperty("jdbc.password"));
 		} catch (SQLException e) {
 			System.err.println("SQL State: " + e.getSQLState());
 			System.err.println("Error Code: " + e.getErrorCode());
@@ -36,31 +29,13 @@ public class ConnectionFactory {
 			throw new RuntimeException("Failed to locate Database Driver");
 		}
 	}
-	
-	public Connection getAWSConnection()
-	{
+	public static Properties getJdbcProperties() {
+		Properties props = new Properties();
 		try {
-			Class.forName("oracle.jdbc.OracleDriver");
-
-			return DriverManager.getConnection(awsUrl, awsUsername, awsPassword);
-		} catch (SQLException e) {
-			System.err.println("SQL State: " + e.getSQLState());
-			System.err.println("Error Code: " + e.getErrorCode());
-			throw new RuntimeException("Failed to get database connection");
+			props.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("application.properties"));
+		} catch (IOException e) {
+			throw new RuntimeException("Failed to load application.properties");
 		}
-
-		catch (ClassNotFoundException e) {
-			throw new RuntimeException("Failed to locate Database Driver");
-		}
+		return props;
 	}
-	
-
-//	public static Properties getJdbcProperties() {
-//		try {
-//			props.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("application.properties"));
-//		} catch (IOException e) {
-//			throw new RuntimeException("Failed to load application.properties");
-//		}
-//		return props;
-//	}
 }

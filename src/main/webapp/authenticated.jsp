@@ -10,33 +10,32 @@
 	crossorigin="anonymous">
 </head>
 
-<body style="background-image: url('foxhound.png'); background-repeat: no-repeat; background-size: cover; background-color: 070707	;">
+<body style="background-image: url('images/foxhound.png'); background-repeat: no-repeat; background-size: cover; background-color: 070707;">
 
 	<h1>
-		Welcome to our session tracked application,
-		<%=session.getAttribute("username")%><
-	</h1>
-	<h3>
-		Your role:
-		<%=session.getAttribute("job_id")%></h3>
 	<%
 		if (session.getAttribute("job_id").toString().equals("1")) {
 	%>
-	<p>Hello Associate</p>
+	Hello Associate ,
 	<%
 		} else {
 	%>
-	<p>Hello Manager</p>
+	Hello Manager
 	<%
 		}
 	%>
+	
+		<%=session.getAttribute("username")%>
+		</h1>
 
 	<br>
 	
-	<form method="post" action="/ERS/DisplayReimbursements">
+	<form method="post" action="/ERS/ReimbursementServlet">
 		<button onclick="requestData()" value="Request Data">Request Data</button>
 	</form>
 
+
+<!-- 
 	<table>
 		<thead>
 			<tr>
@@ -54,7 +53,7 @@
 		</thead>
 		<tbody id="itemTable"></tbody>
 	</table>
-
+ -->
 	<script src="./index.js"></script>
 </body>
 </html>
