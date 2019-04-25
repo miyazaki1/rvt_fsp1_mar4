@@ -3,18 +3,25 @@ window.onload = () => {
 }
 
 const getAllItems = () => {
+	
 	const xhr = new XMLHttpRequest();
 	
 	xhr.onreadystatechange = () => {
 		if (xhr.status === 200 && xhr.readyState === 4) {
 			const responseJson = xhr.responseText;
+			clearTable();
 			populateTable(JSON.parse(responseJson));
 		}
 	}
 	
-	xhr.open("GET", "http://localhost:8088/ERS/reimb");
+	xhr.open("POST", "http://localhost:8088/ERS/Reimbursement");
 
 	xhr.send();
+}
+
+const clearTable = () => {
+	var table = document.getElementById("itemTable");
+	table.innerHTML = "";
 }
 
 const populateTable = itemList => {

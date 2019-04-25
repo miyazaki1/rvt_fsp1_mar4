@@ -19,7 +19,7 @@ public class DispatcherServlet extends HttpServlet {
 		System.out.println("Entering DispatcherServlet");
 		resp.setContentType("application/json");
 
-		//resp.getOutputStream().write(mapper.writeValueAsBytes(Dispatcher.process(req, resp)));
+		resp.getOutputStream().write(mapper.writeValueAsBytes(Dispatcher.process(req, resp)));
 		System.out.println("Response sent successfully!");
 	}
 	
@@ -28,7 +28,7 @@ public class DispatcherServlet extends HttpServlet {
 		System.out.println("Entering DispatcherServlet.doPost");
 		resp.setContentType("application/json");
 		
-		//resp.getOutputStream().write(mapper.writeValueAsBytes(Dispatcher.processPost(req, resp)));
+		resp.getOutputStream().write(mapper.writeValueAsBytes(Dispatcher.processPost(req, resp)));
 		System.out.println("Response sent successfully!");
 	}
 }

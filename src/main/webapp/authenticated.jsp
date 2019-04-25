@@ -30,12 +30,11 @@
 
 	<br>
 	
-	<form method="post" action="/ERS/ReimbursementServlet">
-		<button onclick="requestData()" value="Request Data">Request Data</button>
-	</form>
+<!--  	<form method="post" action="/ERS/Reimbursement"> -->
+		<button onclick="getAllItems()">Request Data</button>
 
 
-<!-- 
+
 	<table>
 		<thead>
 			<tr>
@@ -53,7 +52,7 @@
 		</thead>
 		<tbody id="itemTable"></tbody>
 	</table>
- -->
+
 	<script src="./index.js"></script>
 </body>
 </html>
