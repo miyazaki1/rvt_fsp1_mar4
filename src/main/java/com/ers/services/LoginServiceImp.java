@@ -1,7 +1,11 @@
 package com.ers.services;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ers.dao.LoginDao;
 import com.ers.dao.LoginDaoImp;
@@ -18,5 +22,19 @@ public class LoginServiceImp implements LoginServices {
 			return null;
 		
 		return dao.attemptAuthentication(username, password);
+	}
+	
+	public LoginData LogOut(HttpServletRequest req, HttpServletResponse resp) {
+		HttpSession session = req.getSession(false);
+		if(session != null)
+		session.invalidate();
+		try {
+			req.getRequestDispatcher("/index.jsp").forward(req,resp);
+		} catch (ServletException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 }

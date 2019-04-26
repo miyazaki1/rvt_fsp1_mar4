@@ -59,6 +59,20 @@ public class EmployeeServiceImp implements EmployeeService{
 	public Employee updateEmployee(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			Employee emp = mapper.readValue(request.getInputStream(), Employee.class);
+			
+			
+//			emp.setUsername(request.getSession().getAttribute("username").toString());
+//			emp.setJob_id(Integer.valueOf(request.getSession().getAttribute("job_id").toString()));
+//			emp.setEmployee_id(Integer.valueOf(request.getSession().getAttribute("employee_id").toString()));
+//			emp.setFirst_name(request.getSession().getAttribute("firstname").toString());
+//			emp.setLast_name(request.getSession().getAttribute("lastname").toString());
+//			emp.setPassword( request.getSession().getAttribute("password").toString());
+			
+			
+		 System.out.println("Inside Update Employee:" + emp);
+			request.getSession().setAttribute("email", emp.getEmail());
+			
+			
 			return  dao.updateEmployee(emp);
 		} catch (JsonParseException e) {
 			e.printStackTrace();

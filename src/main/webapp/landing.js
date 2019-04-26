@@ -14,6 +14,18 @@ var employeeID = 0;
 var jobID = 0;
 var byStatusID = 0;
 
+var  dEID, dFN, dLN, dEM, dJID, dUN, dPW
+
+const setData = (iEID, iFN, iLN, iEM, iJID, iUN,iPW ) =>{
+	dEID = iEID;
+	dFN = iFN;
+	dLN = iLN;
+	dEM = iEM;
+	dJID = iJID;
+	dUN = iUN;
+	dPW = iPW;
+}
+
 const setEmployeeId = (id) =>{
 	employeeID = id;
 }
@@ -453,5 +465,60 @@ const decisionForm = (rid, mid) =>{
 		id : rid,
 		manager_id : mid
 	}
+}
+
+const ProfileUpdateFormShow = () =>{
+	document.getElementById("changeEmail").style.display = 'block';
+	document.getElementById("ConfirmUpdate").style.display = 'block';
+	document.getElementById("CancelUpdate").style.display = 'block';
+
+	document.getElementById("UpdateButton").style.display = 'none';
+
+}
+const ProfileUpdateFormHide = () =>{
+	document.getElementById("changeEmail").style.display = 'none';
+	document.getElementById("ConfirmUpdate").style.display = 'none';
+	document.getElementById("CancelUpdate").style.display = 'none';
+
+	document.getElementById("UpdateButton").style.display = 'block';
+
+}
+
+const CancelUpdateProfile = () =>{
+	document.getElementById("changeEmail").value = "";
+	ProfileUpdateFormHide();
+}
+
+const SubmitForm = () =>{
+	
+	var value = document.getElementById("changeEmail").value;
+	
+	console.log("email value to change: " + value);
+	return{
+		employee_id : dEID,
+		first_name : dFN,
+		last_name : dLN,
+		email : value,
+		job_id : dJID,
+		username : dUN,
+		password : dPW
+	}
+}
+
+const UpdateUser = () => {
+	const xhr = new XMLHttpRequest();	
+	const formData = SubmitForm();
+	console.log("Updating user: " + dFN);
+	xhr.onreadystatechange = () => {
+		if (xhr.status === 200 && xhr.readyState === 4) {
+			setTimeout(3000);
+
+		}
+	}
+	xhr.open("POST", "http://localhost:8088/ERS/EUpdate");
+	xhr.send(JSON.stringify(formData));
+	
+	location.reload();
+
 }
 

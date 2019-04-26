@@ -28,11 +28,16 @@ public class LoginDaoImp implements LoginDao {
 				System.out.println("#### Logged in as: #### \n" + "username: " + rs.getString("username")
 						+ ", first name: " + rs.getString("first_name"));
 				return new LoginData(rs.getInt("employee_id"), rs.getInt("job_id"), rs.getString("username"), 
-						rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"));
+						rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"), rs.getString("password"));
 			}
 		} catch (SQLException e) {
 
 		}
 		return null;
+	}
+	
+	public LoginData LogOut() {
+		return null;
+		
 	}
 }

@@ -3,14 +3,24 @@
 	xmlns:web="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 	<display-name>Archetype Created Web Application</display-name>
+	
+	
 	<servlet>
 		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>com.ers.web.LoginServlet</servlet-class>
+	</servlet>
+		<servlet>
+		<servlet-name>LogoutServlet</servlet-name>
 		<servlet-class>com.ers.web.LoginServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>LoginServlet</servlet-name>
 		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/logout</url-pattern>
 	</servlet-mapping>
 
 	<!-- Front Controller -->
@@ -34,6 +44,10 @@
 		<servlet-name>Employees</servlet-name>
 		<servlet-class>com.ers.web.DispatcherServlet</servlet-class>
 	</servlet>
+			<servlet>
+		<servlet-name>UpdateEmployee</servlet-name>
+		<servlet-class>com.ers.web.DispatcherServlet</servlet-class>
+	</servlet>
 
 	<!-- Mapping -->
 	<servlet-mapping>
@@ -55,6 +69,10 @@
 		<servlet-mapping>
 		<servlet-name>Employees</servlet-name>
 		<url-pattern>/Employees</url-pattern>
+	</servlet-mapping>
+			<servlet-mapping>
+		<servlet-name>UpdateEmployee</servlet-name>
+		<url-pattern>/EUpdate</url-pattern>
 	</servlet-mapping>
 	
 

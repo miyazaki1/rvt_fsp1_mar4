@@ -13,11 +13,14 @@
 <script src="./landing.js">setEmployeeId(<%=session.getAttribute("employee_id")%>)</script>
 </head>
 
-<body
-	style="background-image: url('images/foxhound.png'); background-repeat: no-repeat; background-size: cover; background-color: black;">
+<body>
+	<!--  style="background-image: url('images/foxhound.png'); background-repeat: no-repeat; background-size: cover; background-color: black;"> -->
+	
 
 	<!-- Header -->
+	<form method="POST" action="/ERS/error.jsp"> 
 	<button style="background-color: #131313; color: gray;">Logout</button>
+	</form>
 	<h1>
 		<%
 			if (session.getAttribute("job_id").toString().equals("1")) {
@@ -35,7 +38,19 @@
 			}
 		%>
 		<!-- Prints out username -->
-		<%=session.getAttribute("username")%>
+				
+				<%
+			if (session.getAttribute("username").toString().equals ("alex")) {
+		%>
+		<%=session.getAttribute("username")%>, Happy Birthday!!!
+		<%
+			} else {
+		%>
+			<%=session.getAttribute("username")%>
+		<%
+			}
+		%>
+	
 
 	</h1>
 	<!-- Navigation -->
@@ -173,10 +188,10 @@
 	</div>
 
 	<%}%>
-
 	<div id="MyProfile">
 		<br>
 		<h3>My Profile</h3>
+	
 		<hr>
 		Employee ID::
 		<%=session.getAttribute("employee_id")%>
@@ -187,13 +202,18 @@
 		<br> Last Name::
 		<%=session.getAttribute("lastname")%>
 		<br> E-Mail::
-		<%=session.getAttribute("email")%>
+		<%=session.getAttribute("email")%> <input type="text" id="changeEmail" style="background-color: #131313; color: gray; display: none">
 		<br>
+		<button style="background-color: #131313; color: gray;" onclick="ProfileUpdateFormShow()" id="UpdateButton">Update</button>
+		<button id="ConfirmUpdate" style="background-color: #131313; color: gray; display: none" onclick="UpdateUser()">Confirm</button>
+		<button id="CancelUpdate" style="background-color: #131313; color: gray; display: none" onclick="CancelUpdateProfile()">Cancel</button>
+		
 
 	</div>
 	<script>
 setEmployeeId(<%=session.getAttribute("employee_id")%>)
 setPositionID(<%=session.getAttribute("job_id")%>)
+setData( <%=session.getAttribute("employee_id")%>,"<%=session.getAttribute("firstname")%>","<%=session.getAttribute("lastname")%>","<%=session.getAttribute("email")%>",<%=session.getAttribute("job_id")%>,"<%=session.getAttribute("username")%>","<%=session.getAttribute("password")%>");
 </script>
 
 </body>
