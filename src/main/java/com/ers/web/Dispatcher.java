@@ -26,7 +26,7 @@ public class Dispatcher {
 
 		System.out.println(uri);
 		switch (uri) {
-		case "/employees":
+		case "/Employees":
 			return employeeService.getAllEmployees(request, response);
 		case "/Reimbursement":
 			return reimbursementService.requestAllReimbursements(request, response);
@@ -46,7 +46,7 @@ public class Dispatcher {
 		System.out.println(uri);
 
 		switch (uri) {		
-		case "/employees":
+		case "/Employees":
 			return employeeService.getAllEmployees(request, response);
 		case "/Reimbursement":
 			return reimbursementService.requestAllReimbursements(request, response);

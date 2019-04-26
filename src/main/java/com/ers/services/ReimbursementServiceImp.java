@@ -36,7 +36,7 @@ public class ReimbursementServiceImp implements ReimbursementService {
 	public Reimbursement approveReimbursement(HttpServletRequest req, HttpServletResponse resp) {
 		try {
 			Reimbursement reimbursement = mapper.readValue(req.getInputStream(), Reimbursement.class);
-			return dao.approveReimbursement(reimbursement.getId(), reimbursement.getEmployee_id());
+			return dao.approveReimbursement(reimbursement.getId(), reimbursement.getManager_id());
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -49,7 +49,8 @@ public class ReimbursementServiceImp implements ReimbursementService {
 	public Reimbursement denyReimbursement(HttpServletRequest req, HttpServletResponse resp) {
 		try {
 			Reimbursement reimbursement = mapper.readValue(req.getInputStream(), Reimbursement.class);
-			return dao.declineReimbursement(reimbursement.getId(), reimbursement.getEmployee_id());
+			
+			return dao.declineReimbursement(reimbursement.getId(), reimbursement.getManager_id());
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
