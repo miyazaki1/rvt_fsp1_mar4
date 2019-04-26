@@ -13,9 +13,8 @@
 <script src="./landing.js">setEmployeeId(<%=session.getAttribute("employee_id")%>)</script>
 </head>
 
-<body>
-	<!--  style="background-image: url('images/foxhound.png'); background-repeat: no-repeat; background-size: cover; background-color: black;"> -->
-	
+<body
+	  style="background-image: url('images/foxhound.png'); background-repeat: no-repeat; background-size: cover; background-color: black;">
 
 	<!-- Header -->
 	<form method="POST" action="/ERS/error.jsp"> 
@@ -169,6 +168,15 @@
 	<!--  End of All Reimbursements Table -->
 
 	<div id="EmployeeNav">
+<h4>Add Employee</h4>
+		<label>First Name:</label><input type="text" id="newFirstName">
+		<label>Last Name:</label><input type="text" id="newLastName"><br>
+		
+		<label>Username:</label><input type="text" id="newUsername">
+		<label>Password:</label><input type="text" id="newPassword"><br>
+		<label>Email:</label><input type="text" id="newEmail"><br>
+		
+		<button id="addEmployeeBtn" style="background-color: #131313; color: gray;" onclick="CreateUser()">Add</button>
 
 		<br>
 		<h3>List of All Employees</h3>
