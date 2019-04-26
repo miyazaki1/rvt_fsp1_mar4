@@ -146,6 +146,7 @@ const disableDisplays = () =>{
 	var myReimb = document.getElementById("MyReimbursements");
 	var myProfile = document.getElementById("MyProfile");
 	var empTable = document.getElementById("EmployeeNav");
+	var addEmployee = document.getElementById("addEmployeeForm")
 	
 	if(addRe){
 		addRe.style.display = 'none';
@@ -166,6 +167,10 @@ const disableDisplays = () =>{
 	if(empTable){
 		
 		empTable.style.display = 'none';
+	}
+	
+	if(addEmployee){
+		addEmployee.style.display = 'none'
 	}
 }
 
@@ -369,7 +374,7 @@ const populateByStatus = (itemList) =>{
 		const tdManager = document.createElement("td");
 		const tdStatus = document.createElement("td");
 			
-		const reqDate = Date(item.request_date);
+		const reqDate = Date(item.request_date.toString());
 		const decDate = Date(item.decision_date);
 		
 		tdId.innerHTML = item.id;
@@ -530,6 +535,12 @@ const CreateUser = () => {
 			setTimeout(3000);
 			
 			getAllEmployees();
+			
+			document.getElementById("newFirstName").value = "";
+			document.getElementById("newLastName").value = "";
+			document.getElementById("newEmail").value = "";
+			document.getElementById("newUsername").value = "";
+			document.getElementById("newPassword").value = "";
 		}
 	}
 	xhr.open("POST", "http://localhost:8088/ERS/AddEmployee");
