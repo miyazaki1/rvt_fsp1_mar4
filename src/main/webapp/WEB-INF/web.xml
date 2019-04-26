@@ -48,6 +48,11 @@
 		<servlet-name>UpdateEmployee</servlet-name>
 		<servlet-class>com.ers.web.DispatcherServlet</servlet-class>
 	</servlet>
+	
+			<servlet>
+		<servlet-name>AddEmployee</servlet-name>
+		<servlet-class>com.ers.web.DispatcherServlet</servlet-class>
+	</servlet>
 
 	<!-- Mapping -->
 	<servlet-mapping>
@@ -73,6 +78,11 @@
 			<servlet-mapping>
 		<servlet-name>UpdateEmployee</servlet-name>
 		<url-pattern>/EUpdate</url-pattern>
+	</servlet-mapping>
+	
+			<servlet-mapping>
+		<servlet-name>AddEmployee</servlet-name>
+		<url-pattern>/AddEmployee</url-pattern>
 	</servlet-mapping>
 	
 

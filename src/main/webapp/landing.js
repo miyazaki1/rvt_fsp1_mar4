@@ -185,7 +185,6 @@ const clearTable = () => {
 	if(jobID == 2)
 		{
 		table = document.getElementById("itemTable");
-		// document.getElementById("EmployeeTable").innerHTML = "";
 		}
 	else{
 		table = document.getElementById("myReimbursementTable");
@@ -519,6 +518,43 @@ const UpdateUser = () => {
 	xhr.send(JSON.stringify(formData));
 	
 	location.reload();
+}
 
+const CreateUser = () => {
+	const xhr = new XMLHttpRequest();	
+	const formData = newUserForm();
+	xhr.onreadystatechange = () => {
+		if (xhr.status === 200 && xhr.readyState === 4) {
+			 document.getElementById("EmployeeTable").innerHTML = "";
+			
+			setTimeout(3000);
+			
+			getAllEmployees();
+		}
+	}
+	xhr.open("POST", "http://localhost:8088/ERS/AddEmployee");
+	xhr.send(JSON.stringify(formData));
+}
+
+
+
+const newUserForm = () =>{
+	
+	const FN = document.getElementById("newFirstName").value;
+	const LN = document.getElementById("newLastName").value;
+	const EM = document.getElementById("newEmail").value;
+	const JID = 1;
+	const UN = document.getElementById("newUsername").value;
+	const PW = document.getElementById("newPassword").value;
+
+	return {
+		employee_id : 0,
+		first_name : FN,
+		last_name : LN,
+		email : EM,
+		job_id : JID,
+		username : UN,
+		password : PW		
+	}
 }
 

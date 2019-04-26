@@ -32,6 +32,8 @@ public class Dispatcher {
 			return employeeService.getAllEmployees(request, response);
 		case "/EUpdate":
 			return employeeService.updateEmployee(request, response);
+		case "/AddEmployee":
+			return employeeService.addEmployee(request, response);
 		case "/Reimbursement":
 			return reimbursementService.requestAllReimbursements(request, response);
 		case "/CreateReimbursement":
@@ -58,6 +60,8 @@ public class Dispatcher {
 			return employeeService.getAllEmployees(request, response);
 		case "/EUpdate":
 			return employeeService.updateEmployee(request, response);
+		case "/AddEmployee":
+			return employeeService.addEmployee(request, response);
 		case "/Reimbursement":
 			return reimbursementService.requestAllReimbursements(request, response);
 		case "/CreateReimbursement":

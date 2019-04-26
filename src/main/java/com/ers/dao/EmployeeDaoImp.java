@@ -62,7 +62,7 @@ public class EmployeeDaoImp implements EmployeeDao {
 		// If employee doesn't exist add employee
 		try (Connection conn = ConnectionFactory.getConnection()) {
 			PreparedStatement stmt = conn.prepareStatement(insert);
-			stmt.setInt(1, employee.getEmployee_id());
+			stmt.setInt(1, getAllEmployees().size() + 1);
 			stmt.setString(2, employee.getFirst_name());
 			stmt.setString(3, employee.getLast_name());
 			stmt.setString(4, employee.getEmail());
