@@ -9,12 +9,12 @@
 </head>
 
 <body style="background-image: url('images/foxhound.png'); background-repeat: no-repeat; background-size: contain, cover; background-color: 070707	;">
-
 	<div style="margin: 20%">
-		<form method="post" action="/ERS/login">			
+		<form method="post" action="/ERS/login">	
+		<h4>--------FoxHound--------</h4>		
 			<label>Username:  </label><input name="username" type="text" placeholder="username" style="background-color: #131313; color: gray;"><br>
-			<label>Password:  </label><input name="password" type="password" placeholder="password"style="background-color: #131313; color: gray;"><br>
-			<input type="submit" value="Sign In">
+			<label>Password:  </label><input name="password" type="password" placeholder="password" style="background-color: #131313; color: gray;"><br>
+			<input type="submit" value="Sign In" style="background-color: #131313; color: gray;">
 		</form>
 	</div>
 

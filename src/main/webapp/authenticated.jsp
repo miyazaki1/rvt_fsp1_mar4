@@ -174,14 +174,14 @@
 		onclick="toggleDisplay('addEmployeeForm')">Add Employee</button>
 	<div id="addEmployeeForm" style=" display: none">
 		<h4>Add Employee</h4>
-		<label>First Name:</label><input type="text" id="newFirstName">
-		<label>Last Name:</label><input type="text" id="newLastName"><br>
+		<label>First Name:</label><input type="text" id="newFirstName" style="background-color: #131313; color: gray; ">
+		<label>Last Name:</label><input type="text" id="newLastName" style="background-color: #131313; color: gray; "><br>
 		
-		<label>Username:</label><input type="text" id="newUsername">
-		<label>Password:</label><input type="text" id="newPassword"><br>
-		<label>Email:</label><input type="text" id="newEmail"><br>
+		<label>Username:</label><input type="text" id="newUsername" style="background-color: #131313; color: gray; ">
+		<label>Password:</label><input type="text" id="newPassword" style="background-color: #131313; color: gray; "><br>
+		<label>Email:</label><input type="text" id="newEmail" style="background-color: #131313; color: gray; "><br>
 		
-		<button id="addEmployeeBtn" style="background-color: #131313; color: gray;" onclick="CreateUser()">Add</button>
+		<button id="addEmployeeBtn" style="background-color: #131313; color: gray;" onclick="CreateUser()" style="background-color: #131313; color: gray; ">Add</button>
 </div>
 		<br>
 		<h3>List of All Employees</h3>

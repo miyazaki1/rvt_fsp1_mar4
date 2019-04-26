@@ -374,7 +374,7 @@ const populateByStatus = (itemList) =>{
 		const tdManager = document.createElement("td");
 		const tdStatus = document.createElement("td");
 			
-		const reqDate = Date(item.request_date);
+		const reqDate = Date(item.request_date.toString());
 		const decDate = Date(item.decision_date);
 		
 		tdId.innerHTML = item.id;
