@@ -99,11 +99,14 @@ public class ReimburseDaoImp implements ReimburseDao{
 	}
 
 	@Override
-	public void approveReimbursement(int id, int manager_id) {
+	public Reimbursement approveReimbursement(int id, int manager_id) {
 		try(Connection conn = ConnectionFactory.getConnection()){
 			PreparedStatement stmt = conn.prepareStatement(statusChange);
 			Date date = new Date(System.currentTimeMillis());
-			
+			Reimbursement reimbursement = getReimbursementById(id);
+			reimbursement.setStatus_id(approve_value);
+			reimbursement.setManager_id(manager_id);
+						
 			stmt.setInt(1, approve_value);
 			stmt.setInt(2, manager_id);
 			stmt.setDate(3, Date.valueOf(date.toLocalDate()));
@@ -112,19 +115,26 @@ public class ReimburseDaoImp implements ReimburseDao{
 			int rowsAffected = stmt.executeUpdate();
 			if(rowsAffected ==1) {
 				System.out.println("Approve Successful");
+				return reimbursement;
 			}	
 			
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 	@Override
-	public void declineReimbursement(int id, int manager_id) {
+	public Reimbursement declineReimbursement(int id, int manager_id) {
 		try(Connection conn = ConnectionFactory.getConnection()){
 			PreparedStatement stmt = conn.prepareStatement(statusChange);
 			Date date = new Date(System.currentTimeMillis());
+			Reimbursement reimbursement = getReimbursementById(id);
+			reimbursement.setStatus_id(decline_value);
+			reimbursement.setManager_id(manager_id);
 			
+			System.out.println("Approval Manager ID: " + manager_id);
+						
 			stmt.setInt(1, decline_value);
 			stmt.setInt(2, manager_id);
 			stmt.setDate(3, Date.valueOf(date.toLocalDate()));
@@ -133,11 +143,13 @@ public class ReimburseDaoImp implements ReimburseDao{
 			int rowsAffected = stmt.executeUpdate();
 			if(rowsAffected ==1) {
 				System.out.println("Decline Successful");
+				return reimbursement;
 			}	
 			
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 	
 	@Override

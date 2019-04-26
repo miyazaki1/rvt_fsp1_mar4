@@ -12,8 +12,8 @@
 
 	<div style="margin: 20%">
 		<form method="post" action="/ERS/login">			
-			<label>Username:  </label><input name="username" type="text" placeholder="username"><br>
-			<label>Password:  </label><input name="password" type="password" placeholder="password"><br>
+			<label>Username:  </label><input name="username" type="text" placeholder="username" style="background-color: #131313; color: gray;"><br>
+			<label>Password:  </label><input name="password" type="password" placeholder="password"style="background-color: #131313; color: gray;"><br>
 			<input type="submit" value="Sign In">
 		</form>
 	</div>

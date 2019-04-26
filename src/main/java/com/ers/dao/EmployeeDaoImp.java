@@ -86,7 +86,7 @@ public class EmployeeDaoImp implements EmployeeDao {
 	}
 
 	public Employee updateEmployee(Employee toBeUpdated) {
-		System.out.println("Inside #updateEmployee");
+		System.out.println("Inside #updateEmployee: " + toBeUpdated.getFirst_name());
 		for (int i = 0; i < getAllEmployees().size(); i++) {
 			if (getAllEmployees().get(i).getEmployee_id() == toBeUpdated.getEmployee_id()) {
 				System.out.println("Found employee to be updated employedId: " + toBeUpdated.getEmployee_id());
@@ -98,8 +98,6 @@ public class EmployeeDaoImp implements EmployeeDao {
 					stmt.setString(3, toBeUpdated.getEmail());
 					stmt.setInt(4, toBeUpdated.getJob_id());
 					stmt.setInt(5, toBeUpdated.getEmployee_id());
-					stmt.setString(6, toBeUpdated.getUsername());
-					stmt.setString(7, toBeUpdated.getPassword());
 					
 					int rowsAffected = stmt.executeUpdate();
 					if(rowsAffected ==1) {

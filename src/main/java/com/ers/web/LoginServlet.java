@@ -23,6 +23,12 @@ public class LoginServlet extends HttpServlet {
 		if (user != null) {
 			req.getSession().setAttribute("username", user.getUsername());
 			req.getSession().setAttribute("job_id", user.getJob_id());
+			req.getSession().setAttribute("employee_id", user.getEmployee_id());
+			req.getSession().setAttribute("firstname", user.getFirstname());
+			req.getSession().setAttribute("lastname", user.getLastname());
+			req.getSession().setAttribute("email",  user.getEmail());
+			req.getSession().setAttribute("password", user.getPassword());
+			
 			req.getRequestDispatcher("/authenticated.jsp").forward(req, resp);			
 		} else {
 			resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
